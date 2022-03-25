@@ -1,0 +1,56 @@
+ <html>
+
+ <style>
+ h1 {
+  width:100%:
+  float: center;
+  display: block;
+  background-color: #333;
+  color: #f2f2f2;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  height:100px;
+}
+
+img {
+   background-color: #ddd;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+
+}
+progress {
+ background-color: #ddd;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  }
+
+progress {
+  text-align: center;
+}
+progress:after {
+  content: {{test}};
+}
+
+ </style>
+
+ <body>
+		<h1> YOU ARE ELIGIBLE FOR ADMISSION </h1>
+	    <div>
+        <hr>
+        <hr>
+     <b><p>Predicted college for your Admission</p> <hr><hr><p style="width: 100%; font-size: medium; color:red;">{{ prediction_text }}<br></p><hr><hr></b>
+     </div>
+		<img src = "https://i.pinimg.com/originals/4d/97/1f/4d971f3171aed1fe52625c893ebdc5f8.jpg" alt = "this slowpoke moves" width = 250>
+		<br>
+		<br>
+		<progress value= {{prob}} max="100"/>
+
+ </body>
+ </html>
+
+

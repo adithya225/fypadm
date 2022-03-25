@@ -1,0 +1,116 @@
+
+<html>
+
+<head>
+<title> Predict Your Admission </title>
+<h1><b><u><center>  Predict Your Admission </center></u></b></h1><hr>
+<hr>
+    <style>
+ h1 {
+  width:100%:
+  float: center;
+  display: block;
+  background-color: #333;
+  color: #f2f2f2;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  height:100px;
+}
+
+img {
+   background-color: #ddd;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+
+}
+progress {
+ background-color: #ddd;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  }
+
+progress {
+  text-align: center;
+}
+progress:after {
+  content: {{test}};
+}
+
+ </style>
+</head>
+
+<body  bgcolor="white" marginwidth="250">
+
+<hr>
+<h2 style="color:rgb(255,0,0)"> Technologies </h2>
+
+<dl>
+    <dt> Data Science</dt>
+    <dd>Data science encompasses preparing data for analysis, including cleansing, aggregating, and manipulating the data to perform advanced data analysis.</dd>
+</dl>
+ <div class="login">
+	<h1>Predict the Admission</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+
+    <form name="myform" action="{{ url_for('predict')}}"method="post" onsubmit="return(validateform());"><hr>
+        <input type="text" style="background-color:rgba(219, 228, 236,0.5); height: 45px;" name="gre" placeholder="Enter Your GRE Score (0-340)" required="required" />
+        <input type="text" style="background-color:rgba(219, 228, 236,0.5);height: 45px;" name="toefl" placeholder="Enter TOEFL Score (0-120)" required="required" />
+        <select name="ur" style="background-color:rgba(219, 228, 236,0.5);width: 400px;height: 45px;padding: 10px;margin-bottom: 10px;font-size: 13px;text-shadow: 1px 1px 1px rgb(0,0,0);border: 1px solid rgba(0,0,0,0.3);border-radius: 4px;box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);">
+        <option value="ur" style="color: aliceblue;">University Rank</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+		<option value="4">4</option>
+        <option value="5">5</option>
+		</select><hr>
+        <select name="sop" style="background-color:rgba(219, 228, 236,0.5);width: 400px;height: 45px;padding: 10px;margin-bottom: 10px;font-size: 13px;text-shadow: 1px 1px 1px rgb(0,0,0);border: 1px solid rgba(0,0,0,0.3);border-radius: 4px;box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);">
+        <option value="sop" style="color: aliceblue;">Statement of Purpose</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+		<option value="4">4</option>
+        <option value="5">5</option>
+		</select>
+        <select name="lor" style="background-color:rgba(219, 228, 236,0.5);width: 400px;height: 45px;padding: 10px;margin-bottom: 10px;font-size: 13px;text-shadow: 1px 1px 1px rgb(0,0,0);border: 1px solid rgba(0,0,0,0.3);border-radius: 4px;box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);">
+        <option value="lor" style="color: aliceblue;">Letter of Recomendation </option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+		<option value="4">4</option>
+        <option value="5">5</option>
+		</select><hr>
+        <input type="text" style="background-color:rgba(219, 228, 236,0.5);height: 45px;" name="cgpa" placeholder="Enter Your CGPA (0-10)" required="required" />
+        <select name="research" style="background-color:rgba(219, 228, 236,0.5);width: 400px;height: 45px;padding: 10px;margin-bottom: 10px;font-size: 13px;text-shadow: 1px 1px 1px rgb(0,0,0);border: 1px solid rgba(0,0,0,0.3);border-radius: 4px;box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);">
+        <option value="research" style="color: aliceblue;">Research Experience</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+		</select><hr>
+        <br><hr>
+        <input type="text" style="background-color:rgba(219, 228, 236,0.5); height: 45px;" name="ssc" placeholder="Enter Your 10th Percentage" required="required" />
+        <input type="text" style="background-color:rgba(219, 228, 236,0.5); height: 45px;" name="hsc" placeholder="Enter Your 12th Percentage" required="required" /><hr>
+        <select name="location" style="background-color:rgba(219, 228, 236,0.5);width: 400px;height: 45px;padding: 10px;margin-bottom: 10px;font-size: 13px;text-shadow: 1px 1px 1px rgb(0,0,0);border: 1px solid rgba(0,0,0,0.3);border-radius: 4px;box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);">
+        <option value="location" style="color: aliceblue;">Choose Your Prefered Location</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="CANADA">CANADA</option>
+		</select><hr>
+        <hr><hr>
+        <button type="submit" class="btn btn-primary btn-block btn-large" style=" backgroud:green;bgcolor:green margin-bottom: 10px;">Predict</button>
+        <hr><hr>
+        
+        <!--<a href="visual" class="btn btn-primary btn-block btn-large" style="text-decoration: none;">Visualize</a>-->
+    </form>
+
+
+ </div>
+
+
+ </center>
+</body>
+</html>
