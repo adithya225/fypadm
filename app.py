@@ -6,10 +6,10 @@ import pickle
 app = Flask(__name__)
 reg = pickle.load(open('admission_linearmodel.pkl', 'rb'))
 sc1 = pickle.load(open('scaler1.pkl', 'rb'))
-sc2 = pickle.load(open('scaler1.pk2', 'rb'))
-sc3 = pickle.load(open('scaler1.pk3', 'rb'))
-sc4 = pickle.load(open('scaler1.pk4', 'rb'))
-sc5 = pickle.load(open('scaler1.pk5', 'rb'))
+sc2 = pickle.load(open('scaler2.pkl', 'rb'))
+sc3 = pickle.load(open('scaler3.pkl', 'rb'))
+sc4 = pickle.load(open('scaler4.pkl', 'rb'))
+sc5 = pickle.load(open('scaler5.pkl', 'rb'))
 
 @app.route('/', methods=["GET","POST"])
 def index():
