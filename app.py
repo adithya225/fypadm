@@ -1,14 +1,15 @@
-from flask import Flask, request, render_template
-import joblib
+import numpy as np
+from flask import Flask, request, jsonify, render_template
+import pickle
 
 
 app = Flask(__name__)
-reg = joblib.load('admission_linearmodel.pkl')
-sc1 = joblib.load('scaler1.pkl')
-sc2 = joblib.load('scaler2.pkl')
-sc3 = joblib.load('scaler3.pkl')
-sc4 = joblib.load('scaler4.pkl')
-sc5 = joblib.load('scaler5.pkl')
+reg = pickle.load(open('admission_linearmodel.pkl', 'rb'))
+sc1 = pickle.load(open('scaler1.pkl', 'rb'))
+sc2 = pickle.load(open('scaler1.pk2', 'rb'))
+sc3 = pickle.load(open('scaler1.pk3', 'rb'))
+sc4 = pickle.load(open('scaler1.pk4', 'rb'))
+sc5 = pickle.load(open('scaler1.pk5', 'rb'))
 
 @app.route('/', methods=["GET","POST"])
 def index():
